@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Farmer or other stakeholder profile",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["farmer", "manufacturer", "distributor", "retailer"] }
+      },
+      "required": ["uid", "name", "email", "role"]
+    },
+    "Batch": {
+      "title": "Batch",
+      "description": "Seed batch for traceability",
+      "type": "object",
+      "properties": {
+        "batchId": { "type": "string" },
+        "seedName": { "type": "string" },
+        "seedVariety": { "type": "string" },
+        "cropType": { "type": "string" },
+        "manufacturerUid": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "stage": { "type": "string" },
+              "timestamp": { "type": "string", "format": "date-time" },
+              "location": { "type": "string" },
+              "details": { "type": "string" },
+              "actor": { "type": "string" }
+            }
+          }
+        },
+        "retailerInfo": {
+          "type": "object",
+          "properties": {
+            "price": { "type": "number" },
+            "confirmed": { "type": "boolean" }
+          }
+        },
+        "reviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "farmerName": { "type": "string" },
+              "rating": { "type": "number" },
+              "reviewText": { "type": "string" },
+              "timestamp": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      },
+      "required": ["batchId", "seedName", "manufacturerUid", "createdAt"]
+    },
+    "Recommendation": {
+      "title": "Recommendation",
+      "description": "Saved crop recommendation results",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "soilData": { "type": "object" },
+        "recommendedCrop": { "type": "string" },
+        "cropInfo": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "recommendedCrop", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/batches/{batchId}": {
+      "schema": "Batch",
+      "description": "Seed batches"
+    },
+    "/recommendations/{recId}": {
+      "schema": "Recommendation",
+      "description": "Saved recommendations"
+    }
+  }
+}
