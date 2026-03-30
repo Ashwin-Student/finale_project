@@ -1,0 +1,13 @@
+flask
+flask-cors
+web3
+pandas
+numpy
+scikit-learn
+tensorflow
+mysql-connector-python
+requests
+joblib
+pypdf
+google-generativeai
+python-dotenv

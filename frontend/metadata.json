@@ -1,0 +1,8 @@
+{
+  "name": "Smart Agro AI",
+  "description": "A modern mobile application for farmers combining AI crop recommendation and blockchain-inspired seed traceability.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
