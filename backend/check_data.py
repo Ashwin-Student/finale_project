@@ -3,10 +3,10 @@ import mysql.connector
 def check_counts():
     try:
         conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="Ashvin@123",
-            database="crop_project"
+            host="",
+            user="",
+            password="",
+            database=""
         )
         cursor = conn.cursor()
         
