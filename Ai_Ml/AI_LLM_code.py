@@ -27,10 +27,10 @@ sys.path.append(BACKEND_DIR)
 try:
     from config import WEATHER_API_KEY as API_KEY_WEATHER
 except ImportError:
-    API_KEY_WEATHER = "d34310b5fe0a4c2786753531262003" # Fallback
+    API_KEY_WEATHER = "" # Fallback
 
 # Use API Key from Firebase config
-GEMINI_API_KEY = "AIzaSyCaDYXTpkCHwSfYWXnevXbmVTFlYViuFds"
+GEMINI_API_KEY = ""
 genai.configure(api_key=GEMINI_API_KEY)
 
 model_llm = genai.GenerativeModel("gemini-1.5-flash") # Use 1.5-flash as 2.5 is not a valid model name
